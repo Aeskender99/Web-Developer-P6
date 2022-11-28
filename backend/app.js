@@ -18,7 +18,7 @@ require('dotenv').config();*/
 
 //connexion à Mongo DB
 
-mongoose.connect('mongodb+srv://Aeskender:<Loulou1984*>@cluster0.d7yee83.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://Aeskender:<xxxxxxxx>@cluster0.d7yee83.mongodb.net/?retryWrites=true&w=majority',
 {useNewUrlParser: true, 
 useUnifiedTopology:true })
 .then(()=> console.log ('connexion à mongoDB réussie !'))
