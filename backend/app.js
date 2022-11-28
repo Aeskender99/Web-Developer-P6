@@ -9,16 +9,16 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 /*//va chercher la logique des routes dans le fichier nous servant à mutualiser les routes ensemble
-const saucesRoutes = require('routes/sauces');
-const userRoutes = require('routes/user');*/
+const saucesRoutes = require('./routes/sauces');
+const userRoutes = require('./routes/user');
 
-/*//importation de dotenv
+//importation de dotenv
 require('dotenv').config();*/
 
 
 //connexion à Mongo DB
 
-mongoose.connect(`mongodb+srv://${process.env.userMongo}:${process.env.passMongo}@cluster0.d7yee83.mongodb.net/${process.env.nameDb}?retryWrites=true&w=majority`,
+mongoose.connect('mongodb+srv://Aeskender:<Loulou1984*>@cluster0.d7yee83.mongodb.net/?retryWrites=true&w=majority',
 {useNewUrlParser: true, 
 useUnifiedTopology:true })
 .then(()=> console.log ('connexion à mongoDB réussie !'))
