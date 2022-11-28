@@ -12,8 +12,8 @@ const bodyParser = require('body-parser');
 const saucesRoutes = require('routes/sauces');
 const userRoutes = require('routes/user');*/
 
-//importation de dotenv
-require('dotenv').config();
+/*//importation de dotenv
+require('dotenv').config();*/
 
 
 //connexion à Mongo DB
