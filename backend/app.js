@@ -10,19 +10,20 @@ const bodyParser = require('body-parser');
 
 /*//va chercher la logique des routes dans le fichier nous servant à mutualiser les routes ensemble
 const saucesRoutes = require('./routes/sauces');
-const userRoutes = require('./routes/user');
+const userRoutes = require('./routes/user');*/
 
-//importation de dotenv
+/*//importation de dotenv
 require('dotenv').config();*/
 
 
 //connexion à Mongo DB
 
-mongoose.connect('mongodb+srv://Aeskender:<xxxxxxxx>@cluster0.d7yee83.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://Aeskender:L123123*@cluster0.d7yee83.mongodb.net/?retryWrites=true&w=majority',
 {useNewUrlParser: true, 
 useUnifiedTopology:true })
 .then(()=> console.log ('connexion à mongoDB réussie !'))
-.catch(()=> console.log('connexion à mongoDB échouée !'));
+.catch((err)=> console.log(err));
+
 
 
 //Permet au server de modifier des choses sur notre site ? CORS
