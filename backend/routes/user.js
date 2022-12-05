@@ -8,8 +8,7 @@ const connectLimatation = tauxLimite({
     max: 3 // Nbr de test max par adresse ip
   });
 
-router.post('/signup', userCtrl.signup);//à revoir !
-router.post('/login',connectLimatation, userCtrl.login);//à Revoir !
-
-
+  router.post('api/auth/signup', userControllers.signup);
+  router.post('api/auth/login', userControllers.login);
+  
 module.exports = router;        

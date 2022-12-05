@@ -8,12 +8,12 @@ const mongoose = require('mongoose');
 const path = require('path');
 const bodyParser = require('body-parser');
 
-/*//va chercher la logique des routes dans le fichier nous servant à mutualiser les routes ensemble
-const saucesRoutes = require('./routes/sauces');
-const userRoutes = require('./routes/user');*/
+//va chercher la logique des routes dans le fichier nous servant à mutualiser les routes ensemble
+const saucesRoutes = require('/Users/bazan/Desktop/OpenClassrooms/P6/Web-Developer-P6/backend/routes/sauces')
+const userRoutes = require('/Users/bazan/Desktop/OpenClassrooms/P6/Web-Developer-P6/backend/routes/user');
 
-/*//importation de dotenv
-require('dotenv').config();*/
+//importation de dotenv
+require('dotenv').config();
 
 
 //connexion à Mongo DB
