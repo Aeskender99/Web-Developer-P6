@@ -9,8 +9,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 //va chercher la logique des routes dans le fichier nous servant à mutualiser les routes ensemble
-const saucesRoutes = require('/Users/bazan/Desktop/OpenClassrooms/P6/Web-Developer-P6/backend/routes/sauces')
-const userRoutes = require('/Users/bazan/Desktop/OpenClassrooms/P6/Web-Developer-P6/backend/routes/user');
+const saucesRoutes = require('./routes/sauces')
+const userRoutes = require('./routes/user');
 
 //importation de dotenv
 require('dotenv').config();
@@ -36,10 +36,10 @@ app.use((req, res, next) => {
     next();
 });
 
-/*//utilise le'routeur' de express.Router() de par exemple: ./routes/sauces.js
-app.use('/api/sauces', saucesRoutes);
-app.use('/api/auth', userRoutes);
+//utilise le'routeur' de express.Router() de par exemple: ./routes/sauces.js
+app.use('api/sauces', saucesRoutes);
+app.use('api/auth', userRoutes);
 
-app.use('/images', express.static(path.join(__dirname, 'images')));*/
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 module.exports = app;

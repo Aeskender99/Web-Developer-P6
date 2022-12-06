@@ -13,7 +13,7 @@ passwordSchema
 .has().lowercase()                              // Must have lowercase letters
 .has().digits()                                // Must have at least 1 digit
 .has().not().symbols();                         // Has no symbols
-
+ 
 exports.signup = (req, res, next) => { // inscription du user
 if (!emailValidator.validate(req.body.email) || !passwordSchema.validate(req.body.password)) { // si l'email et le mot de passe ne sont pas valides
   return res.status(400).json({ message: 'Vérifier votre adresse mail, et le mdp doit avoir au moins 8 caractères, 1 majuscule et  des chiffres '});
