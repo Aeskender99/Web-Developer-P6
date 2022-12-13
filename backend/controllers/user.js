@@ -16,7 +16,7 @@ passwordSchema
  
 exports.signup = (req, res, next) => { // inscription du user
 if (!emailValidator.validate(req.body.email) || !passwordSchema.validate(req.body.password)) { // si l'email et le mot de passe ne sont pas valides
-  return res.status(400).json({ message: 'Vérifier votre adresse mail, et le mdp doit avoir au moins 8 caractères, 1 majuscule et  des chiffres '});
+  return res.status(400).json( { message: 'Vérifier votre adresse mail, et le mdp doit avoir au moins 8 caractères, 1 majuscule et  des chiffres' + req.body.email + req.body.password});
   
 } else if (emailValidator.validate(req.body.email) || passwordSchema.validate(req.body.password)) { // s'ils sont valides
     bcrypt.hash(req.body.password, 10) // hashage du password avec le sel compris dans le nb of round

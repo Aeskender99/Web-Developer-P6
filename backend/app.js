@@ -37,8 +37,8 @@ app.use((req, res, next) => {
 });
 
 //utilise le'routeur' de express.Router() de par exemple: ./routes/sauces.js
-app.use('api/sauces', saucesRoutes);
-app.use('api/auth', userRoutes);
+app.use('/api/sauces', saucesRoutes);
+app.use('/api/auth', userRoutes);
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
