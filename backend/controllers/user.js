@@ -3,6 +3,7 @@ const User = require('../models/user'); // modele user
 const jwt = require('jsonwebtoken'); // token generator package
 const emailValidator = require('email-validator');// email validator package
 const passwordValidator = require('password-validator'); // password validator package
+/*const { RouteConfigLoadEnd } = import('@angular/router');*/
 
 const passwordSchema = new passwordValidator();
 
@@ -44,8 +45,8 @@ exports.login = (req, res, next) => { // connexion du user
         if (!user) {
           return res.status(401).json({ error: 'Utilisateur non trouvé !' });
         } 
-        bcrypt.compare(req.body.password, user.password) // on compare les mots de passes
-          .then(valid => {
+        bcrypt.compare(req.body.password, user.hash) // on compare les mots de passes
+          =(valid => {
             if (!valid) {
               return res.status(401).json({ error: 'Mot de passe incorrect !' });
             }
@@ -60,7 +61,7 @@ exports.login = (req, res, next) => { // connexion du user
             })
             
           })
-          .catch(error => res.status(500).json({ error }));
+          .catch(error => res.status(500).json({ error: req.body.password }));
       })
-      .catch(error => res.status(500).json({ error }));
+      .catch(error => res.status(500).json({ error:'find one' }));
   };
