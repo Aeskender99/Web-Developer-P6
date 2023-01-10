@@ -3,7 +3,7 @@ const fs = require('fs');
 
 //récupère tous les objets sauce de Base de Donnée. 
 
-exports.getSauces = (req, res, next) => {
+exports.getSauces = (_req, res, _next) => {
   Sauce.find()
     .then(sauces => res.status(200).json(sauces))  // POSSIBLE ENDROIT D'ERROR À TESTER. 
     .catch(error => res.status(400).json({ error }));
@@ -11,14 +11,14 @@ exports.getSauces = (req, res, next) => {
 
 // Récupère un obj sauce 
 
-exports.getOneSauce = (req, res, next) => {
+exports.getOneSauce = (req, res, _next) => {
   Sauce.findOne({ _id: req.params.id })
     .then(sauce => res.status(200).json(sauce))
     .catch(error => res.status(404).json({ error }));
 };
 
 //Permet à l'UI de crée un nouvelle obj 'sauce'
-exports.createSauce = (req, res, next) => {
+exports.createSauce = (req, res, _next) => {
   const sauceObject = JSON.parse(req.body.sauce);
   delete sauceObject._id;
   const sauce = new Sauce({
@@ -31,7 +31,7 @@ exports.createSauce = (req, res, next) => {
 };
 
 //Permet de modifier un obj 'sauce'
-exports.modifySauce = (req, res, next) => {
+exports.modifySauce = (req, res, _next) => {
 
   let sauceObject = {};
   req.file ? (
@@ -52,7 +52,7 @@ exports.modifySauce = (req, res, next) => {
 
 //suppr un obj sauce 
 
-exports.deleteSauce = (req, res, next) => {
+exports.deleteSauce = (req, res, _next) => {
   Sauce.findOne({ _id: req.params.id })
     .then(sauce => {
       const filename = sauce.imageUrl.split('/images/')[1];
@@ -65,7 +65,7 @@ exports.deleteSauce = (req, res, next) => {
     .catch(error => res.status(500).json({ error }));
 };
 
-exports.likeSauce = (req, res, next) => {
+exports.likeSauce = (req, res, _next) => {
   const like = req.body.like;
   if (like === 1) { // option j'aime
     Sauce.updateOne(

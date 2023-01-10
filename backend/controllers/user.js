@@ -3,7 +3,7 @@ const User = require('../models/user'); // modele user
 const jwt = require('jsonwebtoken'); // token generator package
 const emailValidator = require('email-validator');// email validator package
 const passwordValidator = require('password-validator'); // password validator package
-/*const { RouteConfigLoadEnd } = import('@angular/router');*/
+
 
 const passwordSchema = new passwordValidator();
 
@@ -15,7 +15,7 @@ passwordSchema
 .has().digits()                                // Must have at least 1 digit
 .has().not().symbols();                         // Has no symbols
  
-exports.signup = (req, res, next) => { // inscription du user
+exports.signup = (req, res, _next) => { // inscription du user
 if (!emailValidator.validate(req.body.email) || !passwordSchema.validate(req.body.password)) { // si l'email et le mot de passe ne sont pas valides
   return res.status(400).json( { message: 'Vérifier votre adresse mail, et le mdp doit avoir au moins 8 caractères, 1 majuscule et  des chiffres' + req.body.email + req.body.password});
   
@@ -28,8 +28,8 @@ if (!emailValidator.validate(req.body.email) || !passwordSchema.validate(req.bod
             password: hash
         });
         user.save()   // et mongoose le stocke dans la bdd
-        .then( hash => res.status(201).json({ message: 'Utilisateur créé !'}))
-        .catch(error => res.status(400).json({ message: 'Email déjà utilisé' }))
+        .then( _hash => res.status(201).json({ message: 'Utilisateur créé !'}))
+        .catch(_error => res.status(400).json({ message: 'Email déjà utilisé' }))
     })
     .catch(error => res.status(500).json({ error }))
     };
@@ -37,7 +37,7 @@ if (!emailValidator.validate(req.body.email) || !passwordSchema.validate(req.bod
 }
 
 
-  exports.login = (req, res, next) => {   // connexion du user
+  exports.login = (req, res, _next) => {   // connexion du user
     User.findOne({ email: req.body.email })   // on vérifie que l'adresse mail figure bien dan la bdd
         .then(user => {
             if (!user) {
