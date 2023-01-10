@@ -7,7 +7,7 @@ const auth = require('../middlewares/auth');
 const multer = require('../middlewares/multer-config');
 
 //import les fonctions des middlewares depuis ../controllers/sauces.js
-const saucesCtrl = require('../controllers/sauce')
+const saucesCtrl = require('../controllers/sauces')
 
 
 router.get('/', auth, saucesCtrl.getSauces);

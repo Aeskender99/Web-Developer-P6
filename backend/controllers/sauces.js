@@ -6,7 +6,7 @@ const fs = require('fs');
 exports.getSauces = (_req, res, _next) => {
   Sauce.find()
     .then(sauces => res.status(200).json(sauces))  // POSSIBLE ENDROIT D'ERROR À TESTER. 
-    .catch(error => res.status(400).json({ error }));
+    .catch(error => res.status(400).json({ error  }));
 };
 
 // Récupère un obj sauce 
