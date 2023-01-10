@@ -37,31 +37,23 @@ if (!emailValidator.validate(req.body.email) || !passwordSchema.validate(req.bod
 }
 
 
-
-
-exports.login = (req, res, next) => { // connexion du user
-  User.findOne({ email: req.body.email }) // on vérifie que l'adresse mail figure bien dan la bdd
-      .then(user => {
-        if (!user) {
-          return res.status(401).json({ error: 'Utilisateur non trouvé !' });
-        } 
-        bcrypt.compare(req.body.password, user.hash) // on compare les mots de passes
-          =(valid => {
-            if (!valid) {
-              return res.status(401).json({ error: 'Mot de passe incorrect !' });
+  exports.login = (req, res, next) => {   // connexion du user
+    User.findOne({ email: req.body.email })   // on vérifie que l'adresse mail figure bien dan la bdd
+        .then(user => {
+            if (!user) {
+                return res.status(401).json({ message: 'Paire login/mot de passe incorrecte'});
             }
-            res.status(200).json({ 
-              userId: user._id,
-              token: jwt.sign( // on génère un token de session pour le user maintenant connecté
-                  { userId: user._id},
-                  process.env.JTK,
-                  { expiresIn: '24h'}
-              )
-              
-            })
-            
-          })
-          .catch(error => res.status(500).json({ error: req.body.password }));
-      })
-      .catch(error => res.status(500).json({ error:'find one' }));
-  };
+            bcrypt.compare(req.body.password, user.password)  // on compare les mots de passes
+                .then(valid => {
+                    if (!valid) {
+                        return res.status(401).json({ message: 'Paire login/mot de passe incorrecte' });
+                    }
+                    res.status(200).json({
+                        userId: user._id,
+                        token: 'TOKEN' // on génère un token de session pour le user maintenant connecté
+                    });
+                })
+                .catch(error => res.status(500).json({ error }));
+        })
+        .catch(error => res.status(500).json({ error }));
+ };
