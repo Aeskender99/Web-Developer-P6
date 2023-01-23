@@ -1,5 +1,9 @@
-const Sauce = require('../models/sauces');
+const Sauce = require('../models/Sauce');
 const fs = require('fs');
+const likeSauce = require("../middlewares/like").likeSauce;
+const unlikeSauce = require("../middlewares/like").unlikeSauce;
+const dislikeSauce = require("../middlewares/like").dislikeSauce;
+
 
 //récupère tous les objets sauce de Base de Donnée. 
 

@@ -1,12 +1,10 @@
 const jwt = require('jsonwebtoken');
 
-const dotenv = require("dotenv");
-dotenv.config();
-const TOKEN_KEY = process.env.TOKEN_KEY;
+
 
 module.exports = (req, res, next) => {
   try {
-    const token = req.headers.authorization.split(' ')[1]; //Vient récupérer le token dans headers authorizations, coupe l'infos à l'espace, créer un tableau avec le split puis on récup l'entrée du token qui est en 2eme pos [1]
+    const token = req.headers.authorization.split(" ")[1]; //Vient récupérer le token dans headers authorizations, coupe l'infos à l'espace, créer un tableau avec le split puis on récup l'entrée du token qui est en 2eme pos [1]
     const decodedToken = jwt.verify(token, TOKEN_KEY);
     const userId = decodedToken.userId;
     req.auth = { userId };
@@ -21,3 +19,4 @@ module.exports = (req, res, next) => {
     });
   }
 };
+
